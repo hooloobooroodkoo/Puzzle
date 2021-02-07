@@ -1,6 +1,8 @@
 """
 https://github.com/hooloobooroodkoo/Puzzle
 """
+
+
 def check_rows(board):
     """
     This function returns True if rows consists only of free spaces,
