@@ -1,4 +1,6 @@
-import doctest
+"""
+https://github.com/hooloobooroodkoo/Puzzle
+"""
 def check_rows(board):
     """
     This function returns True if rows consists only of free spaces,
@@ -20,8 +22,7 @@ def check_rows(board):
                 if len(row) != 9:
                     return False
     return True
-# print(check_rows(["**** ****", "1**1 ****", "**  3****", "* 4  ****", "     9 5 ",
-#                  " 6  83  *", "3   1  **", "  8  2***", "  2  ****"]))
+
 
 def columns(board):
     """
@@ -40,8 +41,7 @@ def columns(board):
             new_row += row[i]
         new_board.append(new_row)
     return new_board
-# print(columns(["**** ****", "***1 ****", "**  3****", "* 4  ****", "     9 5 ",
-#                  " 6  83  *", "3   1  **", "  8  2***", "  2  ****"]))
+
 
 def check_columns(board):
     """
@@ -55,8 +55,7 @@ def check_columns(board):
     False
     """
     return(check_rows(columns(board)))
-# print(check_columns(["**** ****", "3**1 ****", "**  3****", "* 4  ****",\
-    # "     9 5 ", " 6  83  *", "3   1  **", "  8  2***", "  2  ****"]))
+
 
 def create_color_blocks(board):
     """
@@ -76,8 +75,7 @@ def create_color_blocks(board):
         blocks.append(rows[i][num + 1:] + columns_list[num][:(9 - num)])
         num += 1
     return blocks
-# print(create_color_blocks(["**** ****", "***1 ****", "**  3****", "* 4  ****", "     9 5 ",
-                #  " 6  83  *", "3   1  **", "  8  2***", "  2  ****"]))
+
 
 def check_color_blocks(board):
     """
@@ -97,8 +95,6 @@ def check_color_blocks(board):
                 if row.count(element) > 1:
                     return False
     return True
-# print(check_color_blocks(["**** ****", "***1 ****", "**  3****", "* 4  ****", "     9 5 ",
-#                  " 6  83  *", "3   1  **", "  8  2***", "  2  ****"]))
 
 
 def validate_board(board):
@@ -111,11 +107,7 @@ def validate_board(board):
     "     9 5 ", " 6  83  *", "3   1  **", "  8  2***", "  2  ****"])
     False
     """
-    if check_rows(board) is False:
-        return False
-    if check_columns(board) is False:
-        return False
-    if check_color_blocks(board) is False:
+    if (not check_rows(board)) or (not check_columns(board)) or (not check_color_blocks(board)):
         return False
     return True
 
@@ -126,4 +118,3 @@ if __name__ == "__main__":
                           "     9 5 ", " 6  83  *",
                           "3   1  **", "  8  2***",
                           "  2  *6**"]))
-doctest.testmod()
